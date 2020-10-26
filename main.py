@@ -1,8 +1,5 @@
 
-
-
-
-#----------------------------------------Funcoes-------------------------------------------------------
+#----------------------------------------Funcoes lambda-------------------------------------------------------
 
 remover_comentarios = lambda x: True if x[0] != "#" else False
 
@@ -20,6 +17,8 @@ verificar_se_e_para_adicionar_extensao = lambda x:  True if "add extensao" in x 
 
 remover_add_extensao_da_lista = lambda x: True if x != "add extensao" else False
 #----------------------------------------------------------------------------------------------------
+
+
 
 arquivo_config = open("exec/config","r")
 
@@ -41,6 +40,16 @@ if verificar_se_e_para_adicionar_extensao(config):
    config = list(map(add_extensao_se_nao_existir,config))
 
 
+arquivo_final = config[-1]
+
+config = config[0:-1]
+
+texto_final = ""
+
+for x in config:
+    try:
+        texto_final = texto_final + open(x,"r").read()
+    except:
+        print("ERRO NÃO CONSEGUI ABRIR O ARQUIVO:", x,"\n" )
 
 
-print(config)
